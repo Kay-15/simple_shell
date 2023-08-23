@@ -13,7 +13,7 @@ void messsage_error(char *name, int cycles, char **cmd);
 void execute_command(char **command, char **name, char **env, int cycles);
 void print_environ(char **env);
 int string_comapre(char *str1, char *str2);
-unsigned int string_len(char*str);
+unsigned int string_length(char*str);
 char *string_con(char *destination, char *source);
 char *string_copy(char *destination ,char *source);
 int str_int(char *string);

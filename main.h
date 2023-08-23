@@ -1,28 +1,33 @@
 #ifndef MAIN_H
 #define MAIN_H
+#include <stdio.h>
 #include <unistd.h>
 #include <string.h>
-#include <stdlib.h>
-#include <sys/wait.h>
 #include <sys/types.h>
-#include <stdio.h>
 #include <sys/stat.h>
-/*function prototypes*/
+#include <sys/wait.h>
+#include <stdlib.h>
+
+/*prototypes*/
+
 char **get_path_dirs(char **en);
-void messsage_error(char *name, int cycles, char **cmd);
-void execute_command(char **command, char **name, char **env, int cycles);
+void execute_cmd(char **cmd, char *name, char **env, int cycles);
+void message_error(char *name, int cycles, char **cmd);
 void print_environ(char **env);
-int string_comapre(char *str1, char *str2);
-unsigned int string_len(char*str);
+int string_compare(char *str1, char *str2);
+unsigned int string_len(char *str);
+char *string_copy(char *destination, char *source);
 char *string_con(char *destination, char *source);
-char *string_copy(char *destination ,char *source);
 int str_int(char *string);
-void handle_signal(int promt_handle);
+int main(int in_num_args, char **in_arry_args, char **envp);
+void handle_signal(int prompt_handle);
+void exit_shell(char **cmd);
 void handle_EOF(char *buffer_string);
+void free_mem_exit(char **cmd);
 void free_memory(char **cmd);
-void free_mem_exist(char **cmd);
-void exist_shell(char **cmd);
-void child_pro (char **name, char **en, int cycles);
 int change_directory(const char *path);
-char **tokenizer(char *buffer,*buffer, const char *string);
-#endif
+void child_pro(char **cmd, char *name, char **en, int cycles);
+char **tokenizer(char *buffer, const char *string);
+
+
+#endif /*MAIN_H*/
